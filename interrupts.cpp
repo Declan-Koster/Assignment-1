@@ -1,7 +1,5 @@
 #include "interrupts.hpp"
 
-// This code was written in Visual Studios, and we forgot to push the code during the creation. 
-// We have both equally participated in the creation of this code. 
 
 int main(int argc, char** argv) {
 
@@ -42,7 +40,11 @@ int main(int argc, char** argv) {
 
            // Step 1: Switch to kernel mode, save context, find ISR address
            auto [intr_log, new_time] = intr_boilerplate(current_time, number,context_save_time, vectors);
+
            execution += intr_log;
+	   execution += "// Context save time = "
++ std::to_string(context_save_time) + "\n";
+
            current_time = new_time;
 
 
